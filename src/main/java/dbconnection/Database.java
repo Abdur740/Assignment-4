@@ -17,7 +17,7 @@ class Dbconnection{
     private Dbconnection(){
         
     }
-    public static Dbconnection getInstance(){
+    static Dbconnection getInstance(){
         if(connection == null){
             connection = new Dbconnection();
         }
@@ -28,7 +28,7 @@ class Dbconnection{
         LOGGER.info("connected at : {}",connection);
     }
     public void closeconnection(){
-        Dbconnection.connection = null;
+        connection = null;
         status=0;
         LOGGER.info("connection closed\nSelect option for new connection." );   
     }
