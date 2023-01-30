@@ -9,25 +9,38 @@ package dbconnection;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-class dbconnection{
+class Dbconnection{
+    static int status = 0;
+    
     public static final Logger LOGGER = Logger.getLogger("InfoLogging");
-    static dbconnection connection = null;    
-    private dbconnection(){
+    static Dbconnection connection = null;    
+    private Dbconnection(){
         
     }
-    public static dbconnection getInstance(){
+    public static Dbconnection getInstance(){
         if(connection == null){
-            connection = new dbconnection();
+            connection = new Dbconnection();
         }
         return connection;
     }
     public void newconnection(){
+        status = 1;
         LOGGER.info("connected at : {}",connection);
     }
     public void closeconnection(){
         connection = null;
+        status=0;
         LOGGER.info("connection closed\nSelect option for new connection." );   
     }
+    public void checkconnection(){
+        if(status == 0){
+            LOGGER.info("No connection");
+        }
+        else{
+            LOGGER.info("Connected at {}.",connection);
+        }
+        
+}
 }
 
 public class Database{
@@ -38,8 +51,8 @@ public class Database{
         int loop = 0;
             while (loop==0){
                 try{
-                dbconnection db = dbconnection.getInstance();
-                LOGGER.info("select 1. To start a new connection\nselect 2. To close or get new a connection\nselect 3. To Exit a connection");
+                Dbconnection db = Dbconnection.getInstance();
+                LOGGER.info("select 1. To start a new connection\nselect 2. To close or get new a connection\nselect 3. To Exit a connection\nselect 4. Check connection.");
                 LOGGER.info("Enter choice: ");
                 int choice = sc.nextInt();
                     switch(choice){
@@ -50,16 +63,19 @@ public class Database{
                             db.closeconnection();
                             break;
                         case 3:
+                            db.checkconnection();
+                            break;
+                        case 4:
                             loop=1;
                             LOGGER.info("Exit.");
-                            break;
+                            break;   
                         default:
                             LOGGER.info("Please select a valid choice (1/2): ");  
                             break;          
                     }
                 }
                 catch(Exception e){
-                    ;LOGGER.info("{}",e)
+                    System.out.println(e);
                     sc.nextLine();
                 }
         }
