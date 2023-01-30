@@ -10,10 +10,10 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 class Dbconnection{
-    int status = 0;
+    static int status = 0;
     
     public static final Logger LOGGER = Logger.getLogger("InfoLogging");
-    static Dbconnection connection;    
+    static Dbconnection connection=null;    
     private Dbconnection(){
         
     }
@@ -23,16 +23,16 @@ class Dbconnection{
         }
         return connection;
     }
-    public void newconnection(){
+    public static void newconnection(){
         status = 1;
         LOGGER.info("connected at : {}",connection);
     }
-    public void closeconnection(){
-        connection = "";
+    public static void closeconnection(){
+        connection = null;
         status=0;
         LOGGER.info("connection closed\nSelect option for new connection." );   
     }
-    public void checkconnection(){
+    public static void checkconnection(){
         if(status == 0){
             LOGGER.info("No connection");
         }
