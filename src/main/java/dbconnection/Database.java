@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 class Dbconnection{
-    static int status = 0;
+    int status = 0;
     
     public static final Logger LOGGER = Logger.getLogger("InfoLogging");
     static Dbconnection connection = null;    
@@ -75,7 +75,7 @@ public class Database{
                     }
                 }
                 catch(Exception e){
-                    System.out.println(e);
+                   LOGGER.info("{}", e);
                     sc.nextLine();
                 }
         }
