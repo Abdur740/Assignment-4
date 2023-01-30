@@ -51,7 +51,7 @@ public class Database{
         int loop = 0;
             while (loop==0){
                 try{
-                Dbconnection db = Dbconnection.getInstance();
+                Dbconnection.getInstance();
                 LOGGER.info("select 1. To start a new connection\nselect 2. To close or get new a connection\nselect 3. To Exit a connection\nselect 4. Check connection.");
                 LOGGER.info("Enter choice: ");
                 int choice = sc.nextInt();
