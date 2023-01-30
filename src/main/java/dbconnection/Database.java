@@ -28,7 +28,6 @@ class Dbconnection{
         LOGGER.info("connected at : {}",connection);
     }
     public void closeconnection(){
-        connection = null;
         status=0;
         LOGGER.info("connection closed\nSelect option for new connection." );   
     }
