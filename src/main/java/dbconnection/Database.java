@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 class dbconnection{
     public static final Logger LOGGER = Logger.getLogger("InfoLogging");
-    private static dbconnection connection = null;    
+    static dbconnection connection = null;    
     private dbconnection(){
         
     }
@@ -54,12 +54,12 @@ public class Database{
                             LOGGER.info("Exit.");
                             break;
                         default:
-                            System.out.print("Please select a valid choice (1/2): ");  
+                            LOGGER.info("Please select a valid choice (1/2): ");  
                             break;          
                     }
                 }
                 catch(Exception e){
-                    e.printStackTrace();
+                    ;LOGGER.info("{}",e)
                     sc.nextLine();
                 }
         }
