@@ -13,7 +13,7 @@ class Dbconnection{
     int status = 0;
     
     public static final Logger LOGGER = Logger.getLogger("InfoLogging");
-    public static Dbconnection connection = null;    
+    public static final Dbconnection connection = null;    
     private Dbconnection(){
         
     }
