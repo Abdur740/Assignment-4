@@ -17,7 +17,7 @@ class Dbconnection{
     private Dbconnection(){
         
     }
-    final Dbconnection getInstance(){
+    public Dbconnection getInstance(){
         if(connection == null){
             connection = new Dbconnection();
         }
