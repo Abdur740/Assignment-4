@@ -12,12 +12,12 @@ import java.util.logging.Logger;
 class Dbconnection{
     static int status = 0;
     
-    static Logger LOGGER = Logger.getLogger("InfoLogging");
+    public static final Logger LOGGER = Logger.getLogger("InfoLogging");
     static Dbconnection connection = null;    
     private Dbconnection(){
         
     }
-    public static final Dbconnection getInstance(){
+    final Dbconnection getInstance(){
         if(connection == null){
             connection = new Dbconnection();
         }
