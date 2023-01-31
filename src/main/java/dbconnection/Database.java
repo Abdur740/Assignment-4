@@ -12,8 +12,8 @@ import java.util.logging.Logger;
 class Dbconnection{
     static int status = 0;
     
-    public static final Logger LOGGER = Logger.getLogger("InfoLogging");
-    static Dbconnection connection=null;    
+    static Logger LOGGER = Logger.getLogger("InfoLogging");
+    static Dbconnection connection = null;    
     private Dbconnection(){
         
     }
@@ -25,26 +25,29 @@ class Dbconnection{
     }
     public static void newconnection(){
         status = 1;
-        LOGGER.info("connected at : {}",connection);
+        String print = "Connected to port: "+connection;
+        LOGGER.info(print);
     }
-    public static void closeconnection(){
-        connection = null;
+    public static void  closeconnection(){
+        connection=null;
         status=0;
-        LOGGER.info("connection closed\nSelect option for new connection." );   
+        String print ="connection closed\nSelect option for new connection.";
+        LOGGER.info(print);   
     }
     public static void checkconnection(){
         if(status == 0){
             LOGGER.info("No connection");
         }
         else{
-            LOGGER.info("Connected at {}.",connection);
+            String print = "Connected at "+connection;
+            LOGGER.info(print);
         }
         
 }
 }
 
 public class Database{
-    public static final Logger LOGGER = Logger.getLogger("InfoLogging");
+    static Logger LOGGER = Logger.getLogger("InfoLogging");
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);               
@@ -52,7 +55,7 @@ public class Database{
             while (loop==0){
                 try{
                 Dbconnection.getInstance();
-                LOGGER.info("select 1. To start a new connection\nselect 2. To close or get new a connection\nselect 3. To Exit a connection\nselect 4. Check connection.");
+                LOGGER.info("select 1. To start a new connection\nselect 2. To close or get new a connection\nselect 3. Check connection. \nselect 4. To Exit a connection ");
                 LOGGER.info("Enter choice: ");
                 int choice = sc.nextInt();
                     switch(choice){
@@ -75,7 +78,8 @@ public class Database{
                     }
                 }
                 catch(Exception e){
-                   LOGGER.info("{}", e);
+                    String print = ""+e;
+                    LOGGER.info(print);
                     sc.nextLine();
                 }
         }
