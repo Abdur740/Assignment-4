@@ -17,7 +17,7 @@ class Dbconnection{
     private Dbconnection(){
         
     }
-    static Dbconnection getInstance(){
+    public static final Dbconnection getInstance(){
         if(connection == null){
             connection = new Dbconnection();
         }
@@ -42,12 +42,11 @@ class Dbconnection{
             String print = "Connected at "+connection;
             LOGGER.info(print);
         }
-        
-}
+    }
 }
 
 public class Database{
-    static Logger LOGGER = Logger.getLogger("InfoLogging");
+    public static final Logger LOGGER = Logger.getLogger("InfoLogging");
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);               
