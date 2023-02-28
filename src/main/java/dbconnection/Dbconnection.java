@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 
 class Dbconnection{
     static int status = 0;
-    
+    private Dbconnection(){}    
     public static final Logger LOGGER = Logger.getLogger("InfoLogging");
     static Dbconnection connection = null;    
     static Dbconnection getInstance(){
